@@ -2,16 +2,17 @@ package com.devsuperior.DSLLIST.entites;
 
 import java.util.Objects;
 
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Column;
 
 @Entity
 //configura para que ela seja equivalente a uma tabela do banco de dados relacional
-@Table(name= "tb__game")
+@Table(name= "tb_game")
 //
 public class Games {
 
@@ -19,28 +20,33 @@ public class Games {
 	@Id
 	private Long id;
 	private String title;
-	
 	@Column(name= "game_year")
 	private Integer year;
 	private String genre;
-	private String plataform;
+	private String platforms;
+	private double score;
 	private String imgUrl;
+	
+	@Column(columnDefinition = "TEXT")
 	private String shortDescription;
-	private String longdescription;
+	
+	@Column(columnDefinition = "TEXT")
+	private String longDescription;
 	
 	public Games() {
 	}
 
-	public Games(Long id, String title, Integer year, String genre, String plataform, String imgUrl,
-			String shortDescription, String longdescription) {
+	public Games(Long id, String title, Integer year, String genre, String platforms ,double score, String imgUrl,
+			String shortDescription, String longDescription) {
 		this.id = id;
 		this.title = title;
 		this.year = year;
 		this.genre = genre;
-		this.plataform = plataform;
+		this.platforms = platforms;
+		this.score = score;
 		this.imgUrl = imgUrl;
 		this.shortDescription = shortDescription;
-		this.longdescription = longdescription;
+		this.longDescription = longDescription;
 	}
 
 	public Long getId() {
@@ -75,12 +81,20 @@ public class Games {
 		this.genre = genre;
 	}
 
-	public String getPlataform() {
-		return plataform;
+	public String getPlatforms() {
+		return platforms;
 	}
 
-	public void setPlataform(String plataform) {
-		this.plataform = plataform;
+	public void setPlatforms(String platforms) {
+		this.platforms = platforms;
+	}
+
+	public double getScore() {
+		return score;
+	}
+
+	public void setScore(double score) {
+		this.score = score;
 	}
 
 	public String getImgUrl() {
@@ -100,11 +114,11 @@ public class Games {
 	}
 
 	public String getLongdescription() {
-		return longdescription;
+		return longDescription;
 	}
 
-	public void setLongdescription(String longdescription) {
-		this.longdescription = longdescription;
+	public void setLongDescription(String longDescription) {
+		this.longDescription = longDescription;
 	}
 
 	@Override
