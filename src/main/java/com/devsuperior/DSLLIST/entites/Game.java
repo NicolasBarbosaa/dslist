@@ -13,11 +13,13 @@ import jakarta.persistence.Column;
 @Entity
 //configura para que ela seja equivalente a uma tabela do banco de dados relacional
 @Table(name= "tb_game")
-//
+//dei um nome para a tabela
 public class Game {
-
+	//faz com que o ID seja autoincrementado no banco de dados
+	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
+	//o ID vira chave primaria da tabela do banco
 	private Long id;
 	private String title;
 	@Column(name= "game_year")
@@ -137,6 +139,6 @@ public class Game {
 		Game other = (Game) obj;
 		return Objects.equals(id, other.id);
 	}
-	
+	//compara 2 obj para saber se são iguais ou não
 	
 }
