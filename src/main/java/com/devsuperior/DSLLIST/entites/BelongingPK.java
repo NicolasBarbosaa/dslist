@@ -13,18 +13,10 @@ public class BelongingPK {
 	@ManyToOne
 	@JoinColumn(name = "game_id")
 	private Game game;
+	
 	@ManyToOne
 	@JoinColumn(name = "list_id")
 	private GameList list;
-	
-	
-	public BelongingPK() {
-	}
-	
-	public BelongingPK(Game game, GameList list) {s
-		this.game = game;
-		this.list = list;
-	}
 	
 	public Game getGame() {
 		return game;
