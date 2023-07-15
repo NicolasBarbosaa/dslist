@@ -4,8 +4,6 @@ import org.springframework.beans.BeanUtils;
 
 import com.devsuperior.DSLLIST.entites.Game;
 
-import jakarta.persistence.Column;
-
 public class GameDTO {
 	
 	private Long id;
