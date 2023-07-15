@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.devsuperior.DSLLIST.dto.GameDTO;
 import com.devsuperior.DSLLIST.dto.GameMinDTO;
 import com.devsuperior.DSLLIST.entites.Game;
+import com.devsuperior.DSLLIST.projections.GameMinProjection;
 import com.devsuperior.DSLLIST.repositories.GameRepository;
 
 @Service//ele vai registar a classe "GameService" como um componente do sistema
@@ -25,10 +26,17 @@ public class GameService {
 		return new GameDTO(result);
 	}
 	
-	
+	@Transactional(readOnly = true)
 	public List<GameMinDTO> findAll(){
 		List<Game> result = gameRepository.findAll();	
 		return result.stream().map(x -> new GameMinDTO(x)).toList();//libia do java que permite vc fazer operações com sequencias de dados
 		                                                   //transforma o stream novamento em lista
+	}
+	
+
+	@Transactional(readOnly = true)
+	public List<GameMinDTO> findByList(Long listId){
+		List<GameMinProjection> result = gameRepository.searchByList(listId);	
+		return result.stream().map(x -> new GameMinDTO(x)).toList();
 	}
 }
